@@ -1,0 +1,24 @@
+extends layout
+
+
+block head
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/socketComms.js')
+
+block content
+  div(id='new-people-dialog', class='ui-widget')
+    p(class='popupText') enter email of person to add
+    input(type='text', id='NewPersonEmail', class='email')
+  div(id='new-links-dialog', class='ui-widget')
+    p(class='popupText') pick the source person
+    select(id='sourcePeople')
+    p(class='popupText') pick the target person
+    select(id='targetPeople')
+  input(type='hidden',id='people',value=people)
+  input(type='hidden',id='links',value=links)
+  |<p><input type='button' id='addPerson' value='Add Person'></input>&nbsp;<input type='button' id='addLink' value='Add Link'></input>
+  |<span id="summary">There are currently #{peopleCount} users, and #{linksCount} links saved in the database</span></p>
+  br
+  div(id='graph')
+
+  

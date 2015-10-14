@@ -1,0 +1,14 @@
+{
+  "name": "chatApplicationDemo",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "author": "rajnish kumar",
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "socket.io": "*"
+  }
+}

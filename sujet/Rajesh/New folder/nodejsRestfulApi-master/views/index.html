@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RESTFULAPI</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<style>
+ul{padding:0;margin:0;}
+ul li{list-style:none;padding:0;}
+.apiname{padding-left:10px;margin:0;float:left;position:absolute;}
+.putreq{padding:5px;margin-left:20%;background:#3D16E7;width:40px;border-radius:5px;color:#fff;text-align:center;position:relative;}
+.postreq{padding:5px;margin-left:20%;background:#02034D;width:40px;border-radius:5px;color:#fff;text-align:center;}
+.getreq{padding:5px;margin-left:20%;background:#024D08;width:40px;border-radius:5px;color:#fff;text-align:center;}
+.deletereq{padding:5px;margin-left:20%;background:#E71624;width:70px;border-radius:5px;color:#fff;text-align:center;}
+.targetUrl{width:100%;height:30px;background:#000;color:#fff;padding-top:10px;padding-left:30px;border-radius:5px;"}
+.reqhead{padding-left:10px;margin-top:20px;margin-bottom:10px;}
+.reqData{width:100%;height:auto;background:#000;color:#fff;padding-top:10px;padding-bottom:10px;padding-left:30px;border-radius:5px;}
+</style>
+
+</head>
+<body style="margin-top:0px;">
+<div style="height:auto;width:80%;margin-left:10%;background:#FFF;padding-top:20px;">
+<ul>
+<!-- Registration api details -->
+<li>
+<h3 class="apiname">Registration:</h3><h4 class="postreq">POST<h4>
+<div class="targetUrl">http://localhost:3000/api/credentials/registration</div>
+<h4 class="reqhead">Request patameters:</h4>
+<div class="reqData">
+<pre>
+{"name":"rajnish kumar","email":"rajnish@gmail.com","password":"12345"} 
+</pre>
+</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+"message":"registration successful",
+"id":"54a937164cabfdc812af9eae",
+"loginstatus":true,
+"email":"kumarrajnish184@gmail.com",
+"name":"rajnish kumar",
+"modified":"2015-01-09T18:08:47.802Z"
+}
+</pre>
+</div>
+</li>
+<!-- login api details -->
+<li>
+<h3 class="apiname">Login:</h3><h4 class="putreq">PUT<h4>
+<div class="targetUrl">http://localhost:3000/api/credentials/login</div>
+<h4 class="reqhead">Request patameters:</h4>
+<div class="reqData">
+<pre>
+{"email":"rajnish@gmail.com","password":"12345"} 
+</pre>
+</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+"message":"login successful",
+"id":"54a937164cabfdc812af9eae",
+"loginstatus":true,
+"email":"kumarrajnish184@gmail.com",
+"name":"rajnish kumar",
+"modified":"2015-01-09T18:08:47.802Z"
+}
+</pre>
+</div>
+</li>
+
+<!-- logout api details -->
+<li>
+<h3 class="apiname">Logout:</h3><h4 class="putreq">PUT<h4>
+<div class="targetUrl">http://localhost:3000/api/credentials/logout</div>
+<h4 class="reqhead">Request patameters:</h4>
+<div class="reqData">
+<pre>
+{"email":"rajnish@gmail.com"} 
+</pre>
+</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+"message":"user successfully logout",
+"loginstatus":false,
+"modified":"2015-01-09T18:08:47.802Z"
+}
+</pre>
+</div>
+</li>
+
+<!-- =============================================  -->
+<!-- tutorials api details-->
+<!-- ============================================= -->
+
+<!-- get available tutorials -->
+<li>
+<h3 class="apiname">Available tutorials:</h3><h4 class="getreq">GET<h4>
+<div class="targetUrl">http://localhost:3000/api/tutorials/available</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+[{
+_id: "54b0e4f4ad3b51c004000002"
+Desc: "AngularJS, commonly referred to as Angular, is an open-source web application framework maintained by Google and a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications. Its goal is to simplify both development and testing of such applications by providing a framework for client-side model–view–controller (MVC) architecture, along with components commonly used in rich internet applications."
+Image: "Content/Images/angular.jpg"
+Id: "IG01"
+title: "AngularJS"
+}]
+</pre>
+</div>
+</li>
+
+<!-- insert new tutorial -->
+<li>
+<h3 class="apiname">New tutorial:</h3><h4 class="postreq">POST<h4>
+<div class="targetUrl">http://localhost:3000/api/tutorials/new</div>
+<h4 class="reqhead">Request patameters:</h4>
+<div class="reqData">
+<pre>
+ {
+        "title": "AngularJS",
+        "Id": "IG01",
+        "Image" : "Content/Images/angular.jpg",
+        "Desc" : "AngularJS, commonly referred to as Angular, is an open-source web application framework maintained by Google and a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications. Its goal is to simplify both development and testing of such applications by providing a framework for client-side model–view–controller (MVC) architecture, along with components commonly used in rich internet applications.",
+        "Outline": [
+            {"Id": "IG01_1", "label": "Shapping Up with AngularJS","vLink": "http://www.youtube.com/embed/XGSy3_Czz8k"},
+            {"Id": "IG01_2", "label": "Understanding AngularJS $rootscope and $scope", "vLink": "https://www.youtube.com/embed/7XTHdcmjenI"},
+            {"Id": "IG01_3", "label": "Dot in AngularJS"}
+        ]
+    }
+</pre>
+</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+message: "tutorial successful saved"
+title: "AngularJS"
+Id: "IG01"
+Image: "Content/Images/angular.jpg"
+Desc: "AngularJS, commonly referred to as Angular, is an open-source web application framework maintained by Google and a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications. Its goal is to simplify both development and testing of such applications by providing a framework for client-side model–view–controller (MVC) architecture, along with components commonly used in rich internet applications."
+Outline: [3]
+0:  {
+Id: "IG01_1"
+label: "Shapping Up with AngularJS"
+vLink: "http://www.youtube.com/embed/XGSy3_Czz8k"
+_id: "54b0f035fcb146141100000f"
+}
+1:  {
+Id: "IG01_2"
+label: "Understanding AngularJS $rootscope and $scope"
+vLink: "https://www.youtube.com/embed/7XTHdcmjenI"
+_id: "54b0f035fcb146141100000e"
+}
+2:  {
+Id: "IG01_3"
+label: "Dot in AngularJS"
+_id: "54b0f035fcb146141100000d"
+}
+3:  {
+Id: "IG01_4"
+label: "Controller"
+_id: "54b0f035fcb146141100000c"
+}
+
+modified: "2015-01-10T09:26:13.992Z"
+}
+</pre>
+</div>
+</li>
+
+<!-- get tutorial Outlines -->
+<li>
+<h3 class="apiname">Tutorial outlines:</h3><h4 class="getreq">GET<h4>
+<div class="targetUrl">http://localhost:3000/api/tutorials/outlines/:Id</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+_id: "54b1ff14e86dfff00f000002"
+Desc: "AngularJS, commonly referred to as Angular, is an open-source web application framework maintained by Google and a community of individual developers and corporations to address many of the challenges encountered in developing single-page applications. Its goal is to simplify both development and testing of such applications by providing a framework for client-side model–view–controller (MVC) architecture, along with components commonly used in rich internet applications."
+Image: "Content/Images/angular.jpg"
+Id: "IG01"
+title: "AngularJS"
+__v: 0
+modified: "2015-01-11T04:41:56.025Z"
+Outline: [13]
+0:  {
+Id: "IG01_1"
+label: "Shapping Up with AngularJS"
+vLink: "http://www.youtube.com/embed/XGSy3_Czz8k"
+_id: "54b1ff14e86dfff00f00000f"
+}
+1:  {
+Id: "IG01_2"
+label: "Understanding AngularJS $rootscope and $scope"
+vLink: "https://www.youtube.com/embed/7XTHdcmjenI"
+_id: "54b1ff14e86dfff00f00000e"
+}
+2:  {
+Id: "IG01_3"
+label: "Dot in AngularJS"
+_id: "54b1ff14e86dfff00f00000d"
+}
+3:  {
+Id: "IG01_4"
+label: "Controller"
+_id: "54b1ff14e86dfff00f00000c"
+}
+}
+</pre>
+</div>
+</li>
+
+
+<!-- delete tutorial -->
+<li>
+<h3 class="apiname">Delete tutorial:</h3><h4 class="deletereq">DELETE<h4>
+<div class="targetUrl">http://localhost:3000/api/tutorials/delete/:Id</div>
+<h4 class="reqhead">Response Data:</h4>
+<div class="reqData">
+<pre>
+{
+message: "Successfully deleted"
+}
+or
+{
+message: "Already deleted"
+}
+</pre>
+</div>
+</li>
+
+
+</ul>
+</div>
+</body>
+</html>

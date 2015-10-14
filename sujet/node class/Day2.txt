@@ -1,0 +1,136 @@
+Day1
+=====
+app.js
+======
+
+//cls to clear screen
+//Example1:: Print Hello World
+console.log('This is my First Node Application');
+
+//Example 2:: Change color
+//Run Command :: npm install cli-color
+var cli = require('cli-color');
+console.log(cli.blue('"Hello Node.js" in blue'));
+console.log(cli.red('"Hello Node.js" in red color'));
+console.log(cli.green('"Hello Node.js" in green color'));
+
+//NOTE: Check version of node using command :: node -v, npm -help
+
+//Example 3: Defining Variables and operations
+variable_type variable_name;
+var a, b; a = 10; b = 5.4;
+// Addition 
+var c = a + b; console.log("ADD = "+c);//15.4
+// Subtraction
+var c = a - b; console.log("SUB = "+c);//4.6
+// Multiplication
+var c = a * b; console.log("MUL="+c);//54
+// Division
+var c = a / b; console.log("DIV="+c);//1.85....
+
+//EXAMPLE 4 MATH
+var a, b; a = 2;
+b = 3.5;
+console.log(Math.sin(a));
+console.log(Math.cos(b));
+console.log(Math.max(a, b));
+console.log(Math.sqrt(a * b));
+
+//EXample 5 Logical Operations
+var a, b;
+a = 5;
+b = 8;
+console.log(a > b);
+console.log(a < b);
+console.log(a >= b);
+console.log(a <= b);
+console.log(a != b);
+console.log(a == b);
+
+
+//Eample 6, 
+
+var a, b;
+a = 5;
+b = 8;
+console.log(a > b && a != b);
+console.log(!(a >= b));
+console.log(a == b || a > b);
+
+
+//Eample 7: If Statment Execution
+var a, b;
+a = 9;
+b = 8;
+if (a < b || a + b < a) {
+    console.log('conditional-->a>b || a-b<a');
+}
+else
+{
+    console.log('..another');
+}
+
+
+//Example 8: IF Conditional
+var a = 3, b = 3;
+console.log(a > b ? true : false);
+console.log(a == b ? 'a==b' : 'a is not equal to b');
+
+
+//Eample 9, Switch Case Option
+
+var color = 'white';
+switch (color) {
+    case 'black': console.log('black');
+        break;
+    case 'green': console.log('green');
+        break;
+    case 'white': console.log('white');
+        break;
+    default: console.log('No Option');
+        break;
+}
+
+//Eample 10: For loop
+
+for (var counter = 0; counter < 10; counter++) {
+    console.log(counter);
+}
+
+//Eample 11: While loop
+var num = 0;
+while (num < 10) {
+    console.log(num); num++;
+}
+
+//Eample 12: Node provide array for collection Manipulation
+var array = new Array();
+array[0] = 3;
+array[1] = 5;
+array[2] = 12;
+array[3] = 8;
+array[4] = 7;
+//OR Use push() function to insert item into array
+//array.push(10);
+//array.push(18);
+//console.log(array);
+////Traversal array
+for (var i = 0; i < array.length; i++) {
+    console.log(array[i]);
+}
+
+//Eample 13: Update data into array
+array[2] = -2;
+array[3] = 5;
+console.log(array);
+
+//Eample 14:Removing data from array using .pop() or splice(index)
+array.pop();
+array.pop();
+console.log(array);
+
+//splice
+var index = 1;
+array.splice(index, 1);
+console.log(array);
+

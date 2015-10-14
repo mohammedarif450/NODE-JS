@@ -1,0 +1,47 @@
+using System.Net.Mail;
+
+
+
+ MailMessage message = new MailMessage();
+                    SmtpClient smtpClient = new SmtpClient();
+                    string password = string.Empty;
+                    // string oldPassword = string.Empty;
+                    //string newPassword = string.Empty;
+                    // string hashedNewPassword = string.Empty;
+                    //string emailId = Session[USEREMAIL] as string;
+                    string emailId = Session[MANAGEREMAIL] as string;
+
+                    string mailBody = string.Empty;
+                    MailAddress fromAddress = new MailAddress(ConfigurationManager.AppSettings["Email"]); 
+                    message.From = fromAddress;
+                    message.To.Add(emailId);
+                    message.Subject = string.Format("BCB PPT for User:{0}, Project:{1}, Business Case:{2}", user, projectName, bcbName);
+                    message.IsBodyHtml = true;
+                    message.Body = mailBody;
+                    smtpClient.Host = ConfigurationManager.AppSettings["HostName"]; 
+                    smtpClient.Port = 25;
+                    smtpClient.UseDefaultCredentials = true;
+
+                    ////Attachment item = new Attachment(tempDir + fileName);
+                    Attachment item = new Attachment(pptPath);
+                    message.Attachments.Add(item);
+
+                    smtpClient.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["Email"], ConfigurationManager.AppSettings["Password"]);
+                    smtpClient.Send(message);
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "AlertBox", "emailConfirm();", true);
+					
+					
+					
+					
+					
+					
+					
+<appSettings>
+    <add key="aspnet:MaxHttpCollectionKeys" value="10000" />
+    <add key="Email" value=""/>
+    <add key="Password" value=""/>
+    <add key="AdminEmailId" value=""/>
+    <add key="HostName" value="10.4.190.137"/>
+    <add key="TempDir" value="C:\TempFiles\"/>
+ </appSettings>

@@ -1,0 +1,201 @@
+//Example 1
+//Error handling
+//var n = 2;
+//var d = 0;
+//try {
+//    var c = n / d;
+//    if (c == Infinity)
+//    {
+//        throw new Error("This error is caused by invalid operation...");
+//    }
+//}
+//catch (err)
+//{
+//    console.log(err);
+
+//}
+
+
+//Example 2
+//Error Logging
+//Install log4js
+//var log4js = require('log4js');
+//var logger = log4js.getLogger();
+//logger.info('Application is Running...');
+//logger.warn('Module can not be loaded...');
+//logger.error('Saved data was error...');
+//logger.fatal('Server could not process...');
+//logger.debug('some debug Message...');
+
+
+//Example 3
+//Log file
+
+//var log4js = require('log4js');
+//log4js.loadAppender('file');
+//log4js.addAppender(log4js.appenders.file('h:\Node JS APP\ErrorHandling\ErrorHandling.log'), 'ErrorHandling');
+
+//var logger = log4js.getLogger('ErrorHandling');
+//logger.info('Application is Running...');
+//logger.warn('Module can not be loaded...');
+//logger.error('Saved data was error...');
+//logger.fatal('Server could not process...');
+//logger.debug('some debug Message...');
+
+
+//Example 4
+//var EventEmitter = require('events').EventEmitter; 
+//var myEmitter = new EventEmitter;
+//var connection = function(id){
+//    // do something
+//    console.log('client id: ' + id);
+//};
+//myEmitter.on('connection', connection);//If you use the on() method, it means this event listener will listen for the event forever until the application closes.
+//myEmitter.on('message', function(msg){
+//    // do something
+//    console.log('message: ' + msg);
+//});
+
+
+//myEmitter.emit('connection', 6);
+//myEmitter.emit('connection', 8);
+//myEmitter.emit('message', 'this is the first message');
+//myEmitter.emit('message', 'this is the second message');
+//myEmitter.emit('message', 'welcome to nodejs');
+
+//Example 5
+//If you plan to listen for the event once, you can use the once() method.
+//var EventEmitter = require('events').EventEmitter;
+//var myEmitter = new EventEmitter;
+//myEmitter.once('message', function(msg){
+//    // do something
+//    console.log('message: ' + msg);
+//});
+
+
+//myEmitter.emit('message', 'this is the first message');
+//myEmitter.emit('message', 'this is the second message');
+//myEmitter.emit('message', 'welcome to nodejs');
+
+//Example 6
+//Remove Events
+//To remove the event listener, call removeListener(). This function needs an event name and a function variable for parameters.
+//Here is a sample code for how to remove the 'connection' event.
+
+//var EventEmitter = require('events').EventEmitter;
+//var myEmitter = new EventEmitter;
+//// functions
+//var connection = function(id){
+//    // do something
+//    console.log('client id: ' + id);
+//};
+
+//var message = function(msg){
+//    // do something
+//    console.log('message: ' + msg);
+//};
+
+//// waiting event
+//myEmitter.on('connection', connection);
+//myEmitter.on('message', message);
+
+//// send message
+////myEmitter.emit('connection', 6);
+////myEmitter.emit('message', 'welcome to nodejs for client 6');
+//// remove event
+//myEmitter.removeListener('connection', connection);
+//myEmitter.removeListener('message', message);
+
+//// test to send message
+//myEmitter.emit('connection', 10);
+//myEmitter.emit('message', 'welcome to nodejs for client 10');
+
+
+//Example 7. SCOPE and , GLOBAL 
+//-----------------------------------------------------------------------------------------------------------------
+////Javascript function scopes and closures
+//function outer_scope() {
+//    var a = 'I am `a` from outer scope',
+//        b = 'I am `b` from outer scope';
+
+//    console.log('logging from outer scope before inner scope function declaration');
+//    console.log('a: ' + a);
+//    console.log('b: ' + b);
+//    console.log('------------------------------------------');
+
+//    function inner_scope_1() {
+//        console.log('logging from inside function inner_scope_1 before variable declaration');
+//        console.log('a: ' + a);
+//        a = 'I will overwrite the outer scope `a`';
+//        console.log('logging from inside function inner_scope_1 after variable declaration');
+//        console.log('a: ' + a);
+//        var a = 'I will INNER scope `a`';
+//        console.log('a: ' + a);
+//        //var i = 'I am \'i\' inner scope function'
+//        //console.log('i: ' + i);
+//        console.log('------------------------------------------');
+//    }
+
+//    function inner_scope_2() {
+//        console.log('logging from inside function inner_scope_2 before variable declaration');
+//        console.log('b: ' + b);
+//        var b = 'I will not overwrite the outer scope `b`';
+//        console.log('logging from inside function inner_scope_2 after variable declaration');
+//        console.log('b: ' + b);
+//        console.log('------------------------------------------');
+//    }
+
+//    inner_scope_1();
+//    inner_scope_2();
+//    console.log('a: ' + a);
+//    //i = 'I am \'i\' outer scope function'
+//    a = 'I will be the new `a`';
+//    b = 'I will be the new `b`';
+
+//    console.log('logging from outer scope after inner scope executed');
+//    console.log('a: ' + a);
+//    console.log('b: ' + b);
+//    //console.log('i: ' + i);
+//    console.log('------------------------------------------');
+//}
+
+//outer_scope();
+//From the result above we can see clearly the inner scope variable without var overwrites the outer scope variable. Variables in the inner scope declare with var creates a local variable only available inside this scope( function ).
+//The above example is also called closure. So when exactly and how to use ? In OOP we use class attributes to store data. With closure we can store data to `higher level`( outer ) scope variables and reuse it.
+
+//function photo() {
+//    var name = 'ben';
+
+//    return {
+//        say_my_name: function () {
+//            console.log(name);
+//        },
+
+//        rename: function (new_name) {
+//            name = new_name;
+//        }
+//    };
+//}
+
+//var pic = new photo;
+
+//pic.say_my_name();
+
+//pic.rename('bibi');
+
+//pic.say_my_name();
+
+//node.js function scope
+//node.js has it’s own function scope conventions. In client side javascript variables declare with var on the highest scope is a global variable. That’s why we have the self executing anonymous function pattern for not creating global vars.
+
+//In client side javascript this equals to window.name = 'ben'
+
+//var name = 'ben';
+
+//// the above equals to the following
+//(function (global) {
+//    var name = 'ben';
+//})(global);
+
+//To access the global object we need to declare the variable with global keyword
+

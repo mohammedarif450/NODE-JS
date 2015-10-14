@@ -1,0 +1,12 @@
+enter
+c
+a
+e
+
+tooltip
+
+
+bind = curient obect bind js
+
+
+ajax =xmlhttp

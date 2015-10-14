@@ -1,0 +1,7 @@
+npm install -g mongoose     (path ka lia  intal karte hi)
+
+
+
+C:\Users\sp_singh\Roaming
+
+(npm )  nam ka folder create krag

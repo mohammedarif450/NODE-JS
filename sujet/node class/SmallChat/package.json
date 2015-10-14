@@ -1,0 +1,10 @@
+{
+  "name": "SmallChat",
+  "version": "0.0.0",
+  "description": "SmallChat",
+  "main": "server.js",
+  "author": {
+    "name": "Lenovo",
+    "email": ""
+  }
+}

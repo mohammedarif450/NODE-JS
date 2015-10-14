@@ -1,0 +1,210 @@
+Day 2
+=====
+app.js
+==========
+//Example 15: Working with JSOM Data
+var customer = {
+    name: 'michael z',
+    email: 'michael@email.com',
+    age: 35,
+    registereddate: new Date()
+}
+console.log(customer);
+
+//Example 16: Working with JSON data - Nested in JSOM
+var customer = {
+    name: 'michael z',
+    email: 'michael@email.com',
+    age: 35,
+    registereddate: new Date(),
+    address: {
+        city: 'berlin',
+        country: 'berlin'
+    }
+}
+console.log(customer);
+
+//Example 17: Accessing JSON Data
+console.log("Customer Name: ", customer.name);
+console.log("Customer EMail: ", customer.email);
+console.log("Customer Age: ", customer.age);
+console.log("Customer Registered Date: ", customer.registeredDate);
+console.log("Customer Country: ", customer.country);
+
+//Example 18: how we know our JSON object attributes
+
+var myjson = {
+        id: 2,
+        name: 'jackson',
+        email: 'jackson@email.com'
+    };
+
+for (var sujeet in myjson) {
+    console.log(sujeet);
+}
+
+//Example 19: you want to check if the attribute name exists in our JSON object.
+console.log(myjson.hasOwnProperty('id'));
+console.log(myjson.hasOwnProperty('name'));
+console.log(myjson.hasOwnProperty('email'));
+console.log(myjson.hasOwnProperty('address'));
+
+
+
+//Example 20: EDITING JSON
+var customer = {
+    name: 'Michael Z',
+    email: 'michael@email.com',
+    age: 35,
+    registeredDate: new Date(),
+    address: {
+        city: 'Berlin',
+        country: 'Berlin'
+    }
+}
+
+customer.email = 'michael2012@email.com';
+customer.age = 33;
+console.log(customer);
+
+//Example 21: Another solution is to use [] with the attribute name to edit value data.
+
+var myjson = {
+    id: 2,
+    name: 'jackson',
+    email: 'jackson@email.com'
+};
+
+console.log(myjson);
+myjson['country'] = 'germany';
+console.log(myjson);
+
+
+//EXAMPLE 22: JSON Array
+var now = new Date();
+var productTransaction = {
+    id: 2,
+    user: 'agusk',
+    transactionDate: now,
+    details: [
+        {
+            code: 'p01',
+            name: 'ipad 3',
+            price: 600
+        },
+        {
+            code: 'p02',
+            name: 'galaxy tab',
+            price: 500
+        },
+        {
+            code: 'p03',
+            name: 'kindle',
+            price: 120
+        }
+    ]
+}
+console.log(productTransaction);
+
+//We can get JSON data through its attributes, for instance, id and call productTransaction.id:
+console.log('Id:' + productTransaction.id);
+console.log('User:' + productTransaction.user);
+console.log('Transaction date:' + productTransaction.transactionDate);
+console.log('Details:' + JSON.stringify(productTransaction.details));
+
+console.log('hello');
+var i;
+for (is in productTransaction.details) {
+
+    console.log(productTransaction.details[is].code);
+
+}
+
+//If you want to access a JSON array, for instance, using the details attribute, you can pass the index parameter to get a single JSON object
+for (var i = 0; i < producttransaction.details.length; i++) {
+    console.log('code:' + producttransaction.details[i].code);
+    console.log('name:' + producttransaction.details[i].name);
+    console.log('price:' + producttransaction.details[i].price);
+}
+
+//You can see when we call this script:
+console.log('Details:' + productTransaction.details);
+
+//Example 23: How do we edit our JSON array object
+
+productTransaction.user = 'zahra';
+productTransaction.details[0]['price'] = 250;
+console.log(productTransaction);
+
+//Example 24: In the previous section, we learned how to check if the attribute name exists or not. We can do this for a JSON array, too.
+
+console.log(productTransaction['id'] == undefined ? false : true);
+console.log(productTransaction['name'] == undefined ? false : true);
+console.log(productTransaction.details[0]['code'] == undefined ? false : true);
+console.log(productTransaction.details[0]['approved'] == undefined ? false : true);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START FUNCTIONS
+//EXAMPLE 25: Normal function
+function HelloNode()
+{
+    console.log("I am Hello JS function");
+}
+HelloNode();
+
+//EXAMPLE 26: function with return values
+function HelloNode() {
+    return 'I am returning function from Hello Node';
+}
+var result = HelloNode();
+console.log(result);
+
+//EXAMPLE 27: function with Argument
+function HelloNode(a,b) {
+    return a + b;
+}
+var result = HelloNode(3,6);
+console.log(result);
+
+//EXAMPLE 28: Callback Function :: A callback function is a function that is called through a function pointer. 
+//If you pass the pointer (address) of a function as an argument to another and that pointer is used to call the 
+//function it points to, it is said that a callback is made.
+function HelloNode(a,b, callback) {
+    var c = a + b;
+    callback(c)
+}
+HelloNode(3,6,function(result){
+console.log(result);
+})
+
+
+//EXAMPLE 29: Callback Function
+function Perform(a, b, sujeet) {
+    //Do Some proccessing
+    var errorcode = 404;
+    sujeet(errorcode, 'Resource Not Found');
+}
+
+//Perform(10, 5, function (errcode, msg) {
+    if (errcode == 404)
+        console.log(msg);
+})
+
+//EXAMPLE 30: String Operation :: Node.js, string type is defined in String
+//You can define a string type object in two forms.
+var obj = new String("String Definition with 'new' key word");
+var obj1 = "String Definition without 'new' key word";
+console.log(obj + '   ' + obj1);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////                                     Building Your Own Module                  ////////////////////////////////////
+var myModule = require('./MyModule.js');
+var result = myModule.CalF1(20, 10);
+console.log(result);
+
+var result1 = myModule.CalF2(111, 111);
+console.log(result1);
+
+////////////////////////////////////////////////////// Eroor Handling /////////////////////////////////

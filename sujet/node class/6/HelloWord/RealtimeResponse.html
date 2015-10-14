@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Real Time Demo</title>
+    <script language="javascript" type="text/javascript" src="flot-master/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="/flot-master/jquery.flot.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect();
+        var items = [];
+        var counter = 0;
+        socket.on('data', function (data) {
+            console.log(data);
+            items.push([counter, data]);
+            counter = counter + 1;
+            $.plot($("#placeholder"), [items]);
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Message Flow Demo</h1> <div id="placeholder" style="width:600px;height:300px;"></div>
+</body>
+</html>
